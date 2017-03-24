@@ -13,6 +13,14 @@ from nltk import CFG
 import nltk
 from nltk.tag import pos_tag
 from nltk.parse.api import ParserI
+
+def word_tokenize(sentence):
+    return nltk.word_tokenize(sentence)
+
+def lemmatize(word, pos='n'):
+    return nltk.stem.WordNetLemmatizer().lemmatize(word, pos)
+
+
 def clue_preprocess(clue, answer_length):
     
     clue_type = ''
@@ -32,7 +40,7 @@ def clue_preprocess(clue, answer_length):
          tokenized_word = word_tokenize(clue)   
          POS = pos_tag(tokenized_word)
          text = nltk.Text(tokenized_word)
-             a = text.common_contexts(words = tokenized_word)
+         a = text.common_contexts(words = tokenized_word)
          print(a)
          for word,tag in POS:
              print(word, '->', tag)
