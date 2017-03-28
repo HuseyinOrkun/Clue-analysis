@@ -15,20 +15,27 @@ from nltk.tag import pos_tag
 from nltk.parse.api import ParserI
 
 def word_tokenize(sentence):
-    return nltk.word_tokenize(sentence)
+    return word_tokenize(sentence)
 
 def lemmatize(word, pos='n'):
-    return nltk.stem.WordNetLemmatizer().lemmatize(word, pos)
+    return stem.WordNetLemmatizer().lemmatize(word, pos)
+
+def pos_tag(sentence):
+    return pos_tag(sentence)
+
+def stem(word):
+    return stem.LancasterStemmer().stem(word)
+
 
 
 def clue_preprocess(clue, answer_length):
     
     clue_type = ''
-    
+
     processed_clue = clue
 
     if "_" in clue:
-        clue_type = 'fill-in-the-blanks'
+        clue_type = 'fill-in-the-bl anks'
         under_score_no = clue.count('_')
         for i in range(under_score_no):
             if i< answer_length:
